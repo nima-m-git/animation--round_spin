@@ -15,4 +15,11 @@ body {
   margin: 0;
   padding: 0;
   perspective: 1000px;
+
+  background-color: #000;
+  color: white;
+}
+
+.graphics-container {
+  position: relative;
 }

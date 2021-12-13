@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import { Frame } from "framer";
 
 import Square from "./components/Square/Square.js";
+import SettingsBar from "./components/SettingsBar/SettingsBar.js";
 import "./App.css";
 
 const numPoints = 15;
-const r = 120;
+const r = 180;
 const size = 20;
 const duration = 5;
 const backgroundColors = ["#F05", "#85F", "#0CF", "	#32CD32", "#F05"];
-const degs = [0, 180, 360];
+const degs = [0, 90, 270, 360];
 
 const arrNumPoints = Array.from({ length: numPoints }, (_, i) => i);
-
-// console.log(arrNumPoints);
 
 const circleCoords = () => {
   let coords = [];
@@ -43,13 +42,15 @@ function App() {
     size,
   });
   return (
-    <>
-      <Frame width={"100%"} height={"100%"} background={"black"}>
+    <div className="app">
+      <div className="graphics-container">
         {arrNumPoints.map((point) => (
           <Square coords={getCoords(point)} key={point} settings={settings} />
         ))}
-      </Frame>
-    </>
+      </div>
+
+      <SettingsBar settings={settings} setSettings={setSettings} />
+    </div>
   );
 }
 
