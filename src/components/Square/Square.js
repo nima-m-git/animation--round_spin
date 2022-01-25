@@ -1,14 +1,15 @@
-import { Frame } from "framer";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const Square = ({
   coords: [x, y],
-  settings: { backgroundColors, degs, duration, size },
+  settings: { backgroundColors, duration, size },
 }) => {
   return (
-    <Frame
+    <motion.div
+      initial={false}
       animate={{
         background: backgroundColors,
-        rotate: degs,
         x: x,
         y: y,
         borderRadius: ["0%", "40%", "50%", "40%", "0%"],
@@ -20,9 +21,15 @@ const Square = ({
         ease: "linear",
         type: "spring",
       }}
-      size={size}
       center
       radius={"50%"}
+      style={{
+        width: size,
+        height: size,
+        left: "50%",
+        top: "50%",
+        position: "absolute",
+      }}
     />
   );
 };
